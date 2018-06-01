@@ -1,6 +1,10 @@
 function [ sha1, modified ] = git_status(repodir)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%[sha1, modified] = git_status(repodir)
+% Ruslan Belikov
+
+% UPDATED 6/1/2018 by Alexander Rodack
+% Added else for support to non-unix machines to fix output not assigned
+% error
 
 
 if isunix()
@@ -35,6 +39,9 @@ if isunix()
     end
     
     fclose(fid);
+else
+    sha1 = [];
+    modified = 0;
     
 end %isunix()
 
